@@ -41,6 +41,10 @@ public class SupplierEntity {
     @Nonnull
     private AddressEntity address;
 
+    @Column(name = "phone_number")
+    @Nonnull
+    private String phoneNumber;
+
     @OneToMany(mappedBy = "supplier", cascade = CascadeType.PERSIST)
     private Set<ProductEntity> products;
 }
