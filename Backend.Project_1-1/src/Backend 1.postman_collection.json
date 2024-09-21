@@ -1,0 +1,538 @@
+{
+	"info": {
+		"_postman_id": "089ca33e-df7d-48d0-a4d6-2cae9c422231",
+		"name": "Backend 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29605431"
+	},
+	"item": [
+		{
+			"name": "part1",
+			"item": [
+				{
+					"name": "allNewsOnTheTopicOfLinux",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://newsapi.org/v2/everything?q=linux",
+							"protocol": "https",
+							"host": [
+								"newsapi",
+								"org"
+							],
+							"path": [
+								"v2",
+								"everything"
+							],
+							"query": [
+								{
+									"key": "apiKey",
+									"value": "API_KEY",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "linux"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllNewsAboutDevelopment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://newsapi.org/v2/everything?q=development&language=ru&from=2024-08-30&to=2024-09-13",
+							"protocol": "https",
+							"host": [
+								"newsapi",
+								"org"
+							],
+							"path": [
+								"v2",
+								"everything"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "development"
+								},
+								{
+									"key": "language",
+									"value": "ru"
+								},
+								{
+									"key": "from",
+									"value": "2024-08-30"
+								},
+								{
+									"key": "to",
+									"value": "2024-09-13"
+								},
+								{
+									"key": "sortBy",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllNewsAboutLinuxInRussian",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://newsapi.org/v2/everything?q=linux&language=ru&pageSize=10&page=3",
+							"protocol": "https",
+							"host": [
+								"newsapi",
+								"org"
+							],
+							"path": [
+								"v2",
+								"everything"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "linux"
+								},
+								{
+									"key": "language",
+									"value": "ru"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllHeadlinesForScienceInRussian",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eb191fc1fec64f208666090e95f8fc49"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://newsapi.org/v2/top-headlines?country=us&category=science",
+							"protocol": "https",
+							"host": [
+								"newsapi",
+								"org"
+							],
+							"path": [
+								"v2",
+								"top-headlines"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "us"
+								},
+								{
+									"key": "country",
+									"value": "ru",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "science"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://newsapi.org/v2/top-headlines/sources?category=science",
+							"protocol": "https",
+							"host": [
+								"newsapi",
+								"org"
+							],
+							"path": [
+								"v2",
+								"top-headlines",
+								"sources"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "science"
+								},
+								{
+									"key": "country",
+									"value": "ru",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eb191fc1fec64f208666090e95f8fc49"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "part2",
+			"item": [
+				{
+					"name": "contacts из куков достать hhuid и hhtoken",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authority",
+								"value": "kazan.hh.ru",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://hh.ru/vacancy/107503016/contacts?employerId=1947",
+							"protocol": "https",
+							"host": [
+								"hh",
+								"ru"
+							],
+							"path": [
+								"vacancy",
+								"107503016",
+								"contacts"
+							],
+							"query": [
+								{
+									"key": "employerId",
+									"value": "1947"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "part3",
+			"item": [
+				{
+					"name": "getMe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://api.telegram.org/bot{{token}}/getMe"
+					},
+					"response": []
+				},
+				{
+					"name": "getUpdates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://api.telegram.org/bot{{token}}/getUpdates"
+					},
+					"response": []
+				},
+				{
+					"name": "sendMessage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.telegram.org/bot{{token}}/sendMessage?text=hello&chat_id=314168388",
+							"protocol": "https",
+							"host": [
+								"api",
+								"telegram",
+								"org"
+							],
+							"path": [
+								"bot{{token}}",
+								"sendMessage"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "hello"
+								},
+								{
+									"key": "chat_id",
+									"value": "314168388"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendPhoto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/21280715/edu/s21/Backend/Backend.Project_1-1/src/data/small-cute-cat-poster-multicolor-photo-paper-print-poster-cute-original-imagezffcmvryfk8.webp"
+								},
+								{
+									"key": "chat_id",
+									"value": "314168388",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.telegram.org/bot{{token}}/sendPhoto",
+							"protocol": "https",
+							"host": [
+								"api",
+								"telegram",
+								"org"
+							],
+							"path": [
+								"bot{{token}}",
+								"sendPhoto"
+							],
+							"query": [
+								{
+									"key": "chat_id",
+									"value": "314168388",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendPhoto PDF",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/21280715/edu/s21/Backend/Backend.Project_1-1/src/data/Бакиев Айрат.pdf"
+								},
+								{
+									"key": "chat_id",
+									"value": "314168388",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.telegram.org/bot{{token}}/sendPhoto",
+							"protocol": "https",
+							"host": [
+								"api",
+								"telegram",
+								"org"
+							],
+							"path": [
+								"bot{{token}}",
+								"sendPhoto"
+							],
+							"query": [
+								{
+									"key": "chat_id",
+									"value": "314168388",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendPhoto docx",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/21280715/edu/s21/Backend/Backend.Project_1-1/src/data/Привет из docx.docx"
+								},
+								{
+									"key": "chat_id",
+									"value": "314168388",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.telegram.org/bot{{token}}/sendPhoto",
+							"protocol": "https",
+							"host": [
+								"api",
+								"telegram",
+								"org"
+							],
+							"path": [
+								"bot{{token}}",
+								"sendPhoto"
+							],
+							"query": [
+								{
+									"key": "chat_id",
+									"value": "314168388",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserProfilePhotos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.telegram.org/bot{{token}}/getUserProfilePhotos?user_id=314168388",
+							"protocol": "https",
+							"host": [
+								"api",
+								"telegram",
+								"org"
+							],
+							"path": [
+								"bot{{token}}",
+								"getUserProfilePhotos"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "314168388"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.telegram.org/bot{{token}}/getFile?file_id=AgACAgIAAxUAAWbsdhCLb4V6e6wzfK-9ZEbtvDCgAAK8pzEbRNS5Epb1S5xziutJAQADAgADYQADNgQ",
+							"protocol": "https",
+							"host": [
+								"api",
+								"telegram",
+								"org"
+							],
+							"path": [
+								"bot{{token}}",
+								"getFile"
+							],
+							"query": [
+								{
+									"key": "file_id",
+									"value": "AgACAgIAAxUAAWbsdhCLb4V6e6wzfK-9ZEbtvDCgAAK8pzEbRNS5Epb1S5xziutJAQADAgADYQADNgQ"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download file",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://api.telegram.org/file/bot{{token}}/photos/file_0.jpg"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
