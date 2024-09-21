@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  postgres-db:
+    image: 'postgres:latest'
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_PASSWORD: admin
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-db:/data/postgres
+
+  postgres-adminer:
+    image: dpage/pgadmin4
+    container_name: postgres-adminer
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@domain.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "80:80"
