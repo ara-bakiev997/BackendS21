@@ -11,3 +11,7 @@ spring:
       hibernate:
         show_sql: true
       dialect: org.hibernate.dialect.PostgreSQLDialect
+
+#springdoc:
+#  api-docs:
+#    path: swagger/index.html

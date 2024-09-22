@@ -1,7 +1,8 @@
 package edu.backend.services;
 
 import edu.backend.entities.AddressEntity;
-import edu.backend.models.AddressDTO;
+import edu.backend.models.address.v1.AddressV1DTO;
+import edu.backend.models.address.v1.AddressesV1DTO;
 import edu.backend.repositories.AddressRepository;
 import jakarta.annotation.Nonnull;
 import lombok.AllArgsConstructor;
@@ -22,21 +23,36 @@ public class AddressService {
     private final ModelMapper modelMapper;
 
     @Nonnull
-    public List<AddressDTO> getAllAddresses() {
+    public AddressesV1DTO getAllAddresses() {
         final List<AddressEntity> addressEntities = addressRepository.findAll();
 
-        return addressEntities.stream().map(entity -> modelMapper.map(entity, AddressDTO.class)).toList();
+        return new AddressesV1DTO(
+                addressEntities
+                        .stream()
+                        .map(entity -> modelMapper.map(entity, AddressV1DTO.class))
+                        .toList()
+        );
     }
 
     @Transactional
-    public void createAddress(@Nonnull final AddressDTO addressDTO) {
-        final AddressEntity addressEntity = modelMapper.map(addressDTO, AddressEntity.class);
+    public void createAddress(@Nonnull final AddressV1DTO addressV1DTO) {
+        final AddressEntity addressEntity = modelMapper.map(addressV1DTO, AddressEntity.class);
+        Optional.ofNullable(addressEntity.getAddressId())
+                .ifPresent(addressId -> {
+                    if (addressRepository.findById(addressId).isPresent()) {
+                        throw new IllegalArgumentException(String.format(
+                                "Адрес по указанном address_id = %d уже существует",
+                                addressId
+                        ));
+                    }
+                });
+
         addressRepository.save(addressEntity);
     }
 
     @Transactional
-    public void updateById(final long addressId, @Nonnull final AddressDTO addressDTO) {
-        final AddressEntity addressEntity = modelMapper.map(addressDTO, AddressEntity.class);
+    public void updateById(final long addressId, @Nonnull final AddressV1DTO addressV1DTO) {
+        final AddressEntity addressEntity = modelMapper.map(addressV1DTO, AddressEntity.class);
         addressEntity.setAddressId(addressId);
         addressRepository.save(addressEntity);
     }
