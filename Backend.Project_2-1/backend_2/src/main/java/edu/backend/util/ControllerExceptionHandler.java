@@ -1,4 +1,4 @@
-package edu.backend.controllers;
+package edu.backend.util;
 
 import edu.backend.util.ErrorResponseDTO;
 import jakarta.annotation.Nonnull;

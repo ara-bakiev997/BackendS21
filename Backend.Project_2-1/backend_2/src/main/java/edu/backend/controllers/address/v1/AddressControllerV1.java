@@ -1,7 +1,7 @@
 package edu.backend.controllers.address.v1;
 
-import edu.backend.models.address.v1.AddressV1DTO;
-import edu.backend.models.address.v1.AddressesV1DTO;
+import edu.backend.dto.address.v1.AddressV1DTO;
+import edu.backend.dto.address.v1.AddressesV1DTO;
 import edu.backend.services.AddressService;
 import edu.backend.util.ErrorResponseDTO;
 import edu.backend.util.ExampleResponseError;
@@ -29,7 +29,7 @@ import java.util.Map;
 
 @Tag(name = "Адрес", description = "Действия возможные с адресом")
 @Slf4j
-@RequestMapping(value = "/api/v1/addresses", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v${application.api.version}/addresses", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 @AllArgsConstructor
 @ApiResponses(value = {
@@ -47,7 +47,7 @@ import java.util.Map;
                         schema = @Schema(implementation = ErrorResponseDTO.class)
                 ))
 })
-public class AddressController {
+public class AddressControllerV1 {
     private final AddressService addressService;
 
     @Operation(summary = "Получение списока адресов")

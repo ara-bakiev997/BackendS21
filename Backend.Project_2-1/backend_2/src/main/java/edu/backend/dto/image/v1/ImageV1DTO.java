@@ -1,4 +1,4 @@
-package edu.backend.models;
+package edu.backend.dto.image.v1;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class ImageDTO {
+public class ImageV1DTO {
     @Nullable
     private UUID imageId;
 

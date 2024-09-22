@@ -1,4 +1,4 @@
-package edu.backend.models.address.v1;
+package edu.backend.dto.address.v1;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

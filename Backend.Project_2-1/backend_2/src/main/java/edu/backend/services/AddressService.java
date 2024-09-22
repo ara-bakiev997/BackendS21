@@ -1,8 +1,8 @@
 package edu.backend.services;
 
 import edu.backend.entities.AddressEntity;
-import edu.backend.models.address.v1.AddressV1DTO;
-import edu.backend.models.address.v1.AddressesV1DTO;
+import edu.backend.dto.address.v1.AddressV1DTO;
+import edu.backend.dto.address.v1.AddressesV1DTO;
 import edu.backend.repositories.AddressRepository;
 import jakarta.annotation.Nonnull;
 import lombok.AllArgsConstructor;

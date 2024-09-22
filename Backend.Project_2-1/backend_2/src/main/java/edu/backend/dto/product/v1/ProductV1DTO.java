@@ -1,4 +1,4 @@
-package edu.backend.models;
+package edu.backend.dto.product.v1;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class ProductDTO {
+public class ProductV1DTO {
     @Nullable
     private Long productId;
 

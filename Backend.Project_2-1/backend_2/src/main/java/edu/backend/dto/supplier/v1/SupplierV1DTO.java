@@ -1,4 +1,4 @@
-package edu.backend.models;
+package edu.backend.dto.supplier.v1;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class SupplierDTO {
+public class SupplierV1DTO {
     @Nullable
     private Long supplierId;
 
