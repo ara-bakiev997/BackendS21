@@ -50,7 +50,7 @@ import java.util.Map;
 public class AddressControllerV1 {
     private final AddressService addressService;
 
-    @Operation(summary = "Получение списока адресов")
+    @Operation(summary = "Получение списка адресов")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Список адресов"),
     })

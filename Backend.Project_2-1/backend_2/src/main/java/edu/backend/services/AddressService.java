@@ -1,8 +1,8 @@
 package edu.backend.services;
 
-import edu.backend.entities.AddressEntity;
 import edu.backend.dto.address.v1.AddressV1DTO;
 import edu.backend.dto.address.v1.AddressesV1DTO;
+import edu.backend.entities.AddressEntity;
 import edu.backend.repositories.AddressRepository;
 import jakarta.annotation.Nonnull;
 import lombok.AllArgsConstructor;
@@ -34,8 +34,13 @@ public class AddressService {
         );
     }
 
+    @Nonnull
+    public AddressV1DTO getById(final long addressId) {
+        return modelMapper.map(addressRepository.findById(addressId), AddressV1DTO.class);
+    }
+
     @Transactional
-    public void createAddress(@Nonnull final AddressV1DTO addressV1DTO) {
+    public AddressV1DTO createAddress(@Nonnull final AddressV1DTO addressV1DTO) {
         final AddressEntity addressEntity = modelMapper.map(addressV1DTO, AddressEntity.class);
         Optional.ofNullable(addressEntity.getAddressId())
                 .ifPresent(addressId -> {
@@ -47,7 +52,7 @@ public class AddressService {
                     }
                 });
 
-        addressRepository.save(addressEntity);
+        return modelMapper.map(addressRepository.save(addressEntity), AddressV1DTO.class);
     }
 
     @Transactional

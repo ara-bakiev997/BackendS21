@@ -56,3 +56,4 @@ CREATE TABLE clients (
 );
 
 CREATE INDEX i_clients_address_id ON clients(address_id);
+CREATE INDEX ui_clients_client_name_and_client_surname ON clients(client_name, client_surname);
