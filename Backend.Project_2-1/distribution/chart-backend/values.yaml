@@ -1,0 +1,17 @@
+backend:
+  name: backend-2
+  replicaCount: 1
+  image: arabakiev/backend-2:latest
+  containerPort: 8080
+  service:
+    type: ClusterIP
+    port: 9999
+
+postgres:
+  name: postgres-db
+  replicaCount: 1
+  image: postgres:latest
+  containerPort: 5432
+  service:
+    type: ClusterIP
+    port: 5432
