@@ -1,0 +1,34 @@
+stages:
+  - build
+  - push
+  - deploy
+
+build:
+  stage: build
+  tags:
+    - build
+  script:
+    - sudo docker build -t arabakiev/backend-2:latest -t arabakiev/backend-2:1.0.0 -f distribution/Dockerfile .
+  after_script:
+    - bash ./distribution/telegram_bot.sh "$TELEGRAM_BOT_TOKEN" build_image
+
+push:
+  stage: push
+  tags:
+    - push
+  script:
+    - echo "$DOCKER_PASSWORD" | sudo docker login -u "$DOCKER_USERNAME" --password-stdin
+    - sudo docker push arabakiev/backend-2 --all-tags
+  after_script:
+    - bash ./distribution/telegram_bot.sh "$TELEGRAM_BOT_TOKEN" push_image
+deploy:
+  stage: deploy
+  tags:
+    - deploy
+  script:
+    - bash ./distribution/deploy_app.sh
+  dependencies:
+    - build
+  when: manual
+  after_script:
+    - bash ./distribution/telegram_bot.sh "$TELEGRAM_BOT_TOKEN" deploy_k8s

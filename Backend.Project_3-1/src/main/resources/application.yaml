@@ -1,0 +1,26 @@
+application.api.version: 1
+
+server:
+  port: 8888
+  address: 0.0.0.0  # Слушаем на всех интерфейсах
+  forward-headers-strategy: FRAMEWORK
+
+spring:
+  application:
+    name: backend_2
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/db
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:admin}
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+springdoc:
+  api-docs:
+    path: /docs
+#  swagger-ui:
+#    path: /swagger/index.html
+#    config-url: /api/docs/swagger-config

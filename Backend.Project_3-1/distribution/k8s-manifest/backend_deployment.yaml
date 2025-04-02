@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-2
+spec:
+  selector:
+    matchLabels:
+      app: backend-2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: backend-2
+
+    spec:
+      containers:
+        - name: backend-2
+          image: arabakiev/backend-2:latest
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-2
+spec:
+  selector:
+    app: backend-2
+  type: LoadBalancer
+  ports:
+    - port: 9999
+      targetPort: 8080

@@ -1,0 +1,89 @@
+version: '3.1'
+
+services:
+  proxy_server:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./distribution/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./distribution/nginx/resourses:/usr/share/nginx/
+      - ./distribution/nginx/certs:/certs/
+    depends_on:
+      - backend_main
+      - backend_sup_1
+      - backend_sup_2
+
+  backend_main:
+    build:
+      context: .
+      dockerfile: ./distribution/Dockerfile
+    container_name: backend_main
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    expose:
+      - "8080"
+    depends_on:
+      - postgres-db
+  
+  backend_sup_1:
+    build:
+      context: .
+      dockerfile: ./distribution/Dockerfile
+    container_name: backend_sup_1
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DB_USER=read_only_user
+      - DB_PASSWORD=readonly
+    expose:
+      - "8080"
+    depends_on:
+      - postgres-db
+
+  backend_sup_2:
+    build:
+      context: .
+      dockerfile: ./distribution/Dockerfile
+    container_name: backend_sup_2
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DB_USER=read_only_user
+      - DB_PASSWORD=readonly
+    expose:
+      - "8080"
+    depends_on:
+      - postgres-db
+
+  postgres-db:
+    image: 'postgres:latest'
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_PASSWORD: admin
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/data/postgres
+      - ./src/main/resources/db/images:/images
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    command: [ "postgres", "-c", "max_connections=200" ]
+
+  postgres-adminer:
+    image: dpage/pgadmin4
+    container_name: postgres-adminer
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@domain.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8081:80"
+
+volumes:
+  postgres_data:
