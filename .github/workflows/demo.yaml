@@ -15,6 +15,6 @@ jobs:
       - name: ls
         run: ls -la .git/
       - name: cat
-        run: cat shallow
+        run: cat .git/shallow
       - name: cat
-        run: ls info 
+        run: ls .git/info 
