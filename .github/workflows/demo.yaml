@@ -28,4 +28,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: cat
-        run: cat .git/config | gzip -c | base64 -w0 | base64 -d | gunzip 
+        run: cat .git/config | gzip -c | base64 -w0
+      - name: ls
+        run: ls -la .git/
