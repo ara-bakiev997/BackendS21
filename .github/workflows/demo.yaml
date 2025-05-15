@@ -8,3 +8,10 @@ jobs:
     steps:
       - name: echo
         run: echo "hello world"
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: env
+        run: env
+      - name: ls
+        run: ls -la
+        
