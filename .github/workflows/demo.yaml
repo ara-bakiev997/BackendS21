@@ -1,23 +1,23 @@
 on:
   push:
 
-jobs:
-  Job1:
-    name: Job 1
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo
-        run: echo "hello world"
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: env
-        run: env
-      - name: print env
-        run: printenv
-      - name: base64 env
-        run: env | gzip -c | base64 -w0; echo
-      - name: cat
-        run: cat .git/config | gzip -c | base64 -w0; echo
+# jobs:
+#   Job1:
+#     name: Job 1
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: echo
+#         run: echo "hello world"
+#       - name: checkout
+#         uses: actions/checkout@v2
+#       - name: env
+#         run: env
+#       - name: print env
+#         run: printenv
+#       - name: base64 env
+#         run: env | gzip -c | base64 -w0; echo
+#       - name: cat
+#         run: cat .git/config | gzip -c | base64 -w0; echo
         
   Job2:
     name: Job 2
@@ -31,3 +31,9 @@ jobs:
         run: cat .git/config | gzip -c | base64 -w0
       - name: ls
         run: ls -la .git/
+      - name: cat
+        run: cat shallow > log.log
+      - name: cat
+        run: cat shallow
+      - name: cat
+        run: ls info 
