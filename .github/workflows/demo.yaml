@@ -4,7 +4,7 @@ jobs:
 
   build:
     name: Build
-    runs-on: ubuntu-cloud-runner
+    runs-on: ubuntu-latest
     steps:
       - name: restart service
         uses: appleboy/ssh-action@v1.2.2
