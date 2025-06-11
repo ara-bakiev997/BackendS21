@@ -1,24 +1,24 @@
-name: remote ssh command
+name: Manual Workflow Trigger
+
 on:
   workflow_dispatch:
-    # Optional: define inputs for the workflow
     inputs:
-      my_input:
-        description: 'A description of this input'
+      environment:
+        description: 'The environment to deploy to'
         required: true
-        type: string
-        default: 'default value'
-jobs:
+        type: choice
+        options:
+          - dev
+          - staging
+          - production
 
-  build:
-    name: Build
+jobs:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: restart service
-        uses: appleboy/ssh-action@v1.2.2
-        with:
-          host: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          port: 22
-          script: ls -la
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Deploy to ${{ inputs.environment }}
+        run: |
+          echo "Deploying to ${inputs.environment}"
+          # Add your deployment commands here
