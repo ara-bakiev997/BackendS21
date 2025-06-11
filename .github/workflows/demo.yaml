@@ -1,5 +1,13 @@
 name: remote ssh command
-on: [push]
+on:
+  workflow_dispatch:
+    # Optional: define inputs for the workflow
+    inputs:
+      my_input:
+        description: 'A description of this input'
+        required: true
+        type: string
+        default: 'default value'
 jobs:
 
   build:
