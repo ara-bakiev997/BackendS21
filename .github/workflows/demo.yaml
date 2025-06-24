@@ -9,9 +9,5 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: Deploy to ${{ inputs.environment }}
-        run: |
-          echo "Deploying to ${inputs.environment}"
-          # Add your deployment commands here
       - run: ls -la
       - run: pwd
