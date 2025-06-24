@@ -1,16 +1,7 @@
 name: Manual Workflow Trigger
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'The environment to deploy to'
-        required: true
-        type: choice
-        options:
-          - dev
-          - staging
-          - production
+  push:
 
 jobs:
   deploy:
@@ -22,3 +13,5 @@ jobs:
         run: |
           echo "Deploying to ${inputs.environment}"
           # Add your deployment commands here
+      - run: ls -la
+      - run: pwd
